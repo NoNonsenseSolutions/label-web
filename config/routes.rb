@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
-=======
+
+  get 'sessions/new'
+
+  root 'static_pages#home'
+  get 'static_pages/about'
+  get 'static_pages/help'
+  get 'tutorial/:id', to: 'static_pages#tutorial'
+
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :relationships
->>>>>>> bee52195ac69798976b6b37e3c10e565df5b50e3
+
+  namespace :api do
+    resources :users
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
