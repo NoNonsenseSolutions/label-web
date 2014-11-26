@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
   def create
   	params[:auth] = env["omniauth.auth"]
   	user = User.from_omniauth(user_params)
-  	session[:user_id] = user.id
+  	log_in(user)
   	redirect_to '/tutorial/1'
   end
 
   def destroy
-  	session[:user_id] = nil
-  	redirect_to root_url
+    log_out if logged_in?
+    redirect_to root_url
   end
 
   private
