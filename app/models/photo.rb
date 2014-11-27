@@ -4,4 +4,5 @@ class Photo < ActiveRecord::Base
   has_many :likes
   has_many :qrcodes
   has_many :tags
+  mount_uploader :file, PhotoUploader
 end

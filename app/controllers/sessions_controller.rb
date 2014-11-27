@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   private
     def user_params
       params.require(:auth).permit(:provider, :uid, 
-                                    info: [:name, :image], 
+                                    info: [:name, :image, :email], 
                                     credentials: [:token, :expires_at],
                                     extra: [:gender])
     end

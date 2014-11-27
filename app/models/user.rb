@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :following_relationships, class_name: "Relationship", foreign_key: "follower_id"
   has_many :followers, through: :follower_relationships
   has_many :followeds, through: :followed_relationships
+  has_many :photos
 
 
   def following? user
@@ -18,6 +19,7 @@ class User < ActiveRecord::Base
       user.provider = auth[:provider]
       user.uid = auth[:uid]
       user.username = auth[:info][:name]
+      user.email = auth[:info][:email]
       user.oauth_token = auth[:credentials][:token]
       user.oauth_expires_at = Time.at(auth[:credentials][:expires_at])
       user.gender = auth[:extra][:gender]

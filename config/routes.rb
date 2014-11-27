@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :relationships
+  resources :users, only: [:show, :edit, :update]
+  resources :photos, only: []
 
   namespace :api do
     resources :users

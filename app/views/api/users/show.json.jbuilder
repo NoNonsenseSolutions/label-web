@@ -1,5 +1,5 @@
 json.user do
   json.id    @user.id
-  json.username @user.username
+  json.oauth_token @user.oauth_token
 
 end

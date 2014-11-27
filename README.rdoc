@@ -26,3 +26,6 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d ' {"oauth-token": "123"}'  http://fast-cliffs-5083.herokuapp.com/api/users
