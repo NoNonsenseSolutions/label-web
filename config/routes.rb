@@ -10,10 +10,14 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+  get 'signup', to: 'static_pages#signup', as: 'signup'
   get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'photos/pixlr', to: 'photos#pixlr'
   resources :relationships
   resources :users, only: [:show, :edit, :update]
-  resources :photos, only: []
+  resources :photos do
+    resources :comments
+  end
 
   namespace :api do
     resources :users

@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+		$("#photo_file").change(function() {
+	    var file = $(this).get(0);
+	    if (file.size && file.size > 2621440) {
+	        console.log("Hi")
+	    } else {
+	        console.log("Bye")
+	    }
+	});
+});

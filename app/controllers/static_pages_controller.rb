@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
+  before_action :logged_in_user, except: [:signup]
+
   def home
-  	render layout: 'home_layout'
+    @photos = Photo.all.reverse
   end
 
   def help
@@ -12,5 +14,9 @@ class StaticPagesController < ApplicationController
 
   def tutorial
   	render "static_pages/tutorial_page_#{params[:id]}", layout: "home_layout"
+  end
+
+  def signup
+    render layout: 'home_layout'
   end
 end

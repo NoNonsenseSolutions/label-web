@@ -1,18 +1,11 @@
-<div class="center">
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1>LABEL</h1>
+<% provide(:title, "Home")%>
 
-  <h2>
-    SEA's BEST FASHION APP
-  </h2>
-  <% if current_user %>
-  	Signed in as <strong><%= current_user.name %></strong>!
-  	<%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-  	<%= link_to "Sign in with Facebook!", '/auth/facebook', class: "btn btn-lg btn-primary" %>
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <% if @photos.any? %>
+      <ul class="microposts">
+        <%= render @photos %>
+      </ul>
+    <% end %>
+  </div>
 </div>
-

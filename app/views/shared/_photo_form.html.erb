@@ -1,0 +1,58 @@
+<%= form_for(@photo, html: { multipart: true }) do |f| %>
+  <input type="hidden" name="referrer" value="LABEL" />
+  <input type="hidden" id="callback_url" name="exit" value="https://fast-cliffs-5083.herokuapp.com/photos" />
+  <input type="hidden" name="method" value="GET" />
+  <input type="hidden" name="target" value="https://fast-cliffs-5083.herokuapp.com/photos/pixlr" />
+  <input type="hidden" name="locktarget" value="true" />
+  <input type="hidden" name="locktitle" value="true" />
+  <input type="hidden" name="locktype" value="jpg" />
+  <input type="hidden" name="quality" value="100" />
+
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="title">
+
+	</div>
+	<div id="picture">
+	  <div class="wrapper">
+	    <%= f.file_field :file, class: "file-upload" %>
+	    
+	  </div>
+	  <button>Add Photo</button>
+	</div>
+	<div>
+		<label id="file-name"></label>
+	</div>
+  <p class="less_topspaced">
+    <input id="snipshot" type="checkbox" style="border:0;" />
+    <label for="snipshot" class="normal">&nbsp; I want to <b>edit</b>, <b>rotate</b>, or <b>crop</b> my photo first.</label>
+  </p>
+	<div>
+		<%= f.submit "Post", class: "btn btn-primary" %>
+	</div>
+<% end %>
+
+
+
+<script>
+$(document).ready(function(){
+	$('#photo_file').change(function(){
+		var element = document.getElementById("photo_file")
+		var array = element.value.split('\\')
+		var name = array[array.length - 1]
+		console.log(name)
+		$("#file-name").text(name)
+	});
+
+
+
+	$('#snipshot').change(function(){
+    if ($(this).is(":checked")) {
+      $('#new_photo').attr("action", "http://apps.pixlr.com/express/");
+      $('#photo_file').attr("name", "image");
+    } else {
+      $('#new_photo').attr("action", "/photos");
+      $('#photo_file').attr("name", "photo[file]");
+    }
+  });
+});
+</script>

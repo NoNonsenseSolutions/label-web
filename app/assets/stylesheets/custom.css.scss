@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  width: 720px;
+  width: 980px;
 }
 
 section {
@@ -140,3 +140,40 @@ footer ul li {
   border-radius: 10px;
   float: right;
 }
+
+/* photo upload */
+#picture {
+    position: relative;
+}
+
+#picture .wrapper {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+
+#picture .button {
+    background-color: #ccc;
+    border: none;
+    color: #666;
+    padding: 3px 5px;
+    border-radius: 5px;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+div.photo {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.comment-textbox {
+  rows: 5;
+  cols: 50;
+}
+
+.btn-comment { color: #ffffff; background-color: #000000; border-color: #555; }

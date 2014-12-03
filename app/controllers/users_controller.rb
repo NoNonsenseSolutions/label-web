@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@photo = @user.photo.build
-		@photos = @user.photos
+		@photos = @user.photos.reverse
 	end
 
 	def edit

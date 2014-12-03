@@ -2,6 +2,7 @@ module Api
   class BaseController < ApplicationController
     protect_from_forgery with: :null_session
     before_action :set_resource, only: [:destroy, :show, :update]
+    
     respond_to :json
 
     def create
