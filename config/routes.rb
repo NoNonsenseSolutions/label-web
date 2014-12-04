@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   
   get 'photos/pixlr', to: 'photos#pixlr'
-  post 'photos/search', to: 'photos#search'
+  get 'photos/search', to: 'photos#search'
   resources :relationships
   resources :users, only: [:show, :edit, :update]
   resources :photos do

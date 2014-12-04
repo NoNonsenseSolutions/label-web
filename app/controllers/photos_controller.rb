@@ -61,11 +61,12 @@ class PhotosController < ApplicationController
 
 
   def search
-    keyword = params[:keyword]
-    keyword = "##{keyword}" if keyword[0] != "#"
+    keyword = params["keyword"]
+    keyword = "##{keyword}" unless keyword[0] == "#"
     tag = Tag.find_by(field: keyword)
     photos_with_title = Photo.title_search("#{params[:keyword]}")
     @photos = tag.try(:photos).to_a + photos_with_title
+    @photos = @photos.uniq
     render 'search_results'
   end
 

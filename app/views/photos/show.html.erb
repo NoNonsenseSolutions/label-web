@@ -9,6 +9,12 @@
 	</div>
 	<div class="col-md-12">
 	<p><%= link_to "Edit", edit_photo_path, class: "black-link" %> <%= link_to 'Destroy',  { action: :destroy, id: @photo.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "black-link" %>
+	</p>
+	<p>
+		Tags: <% @photo.tags.hash_tags.each do |tag| %>
+			<a href="/photos/search?keyword=<%= "%23" + tag.field[1..-1] %>" class="black-link"><%= tag.field %></a>
+		<% end %> 
+	</p>
 	<div>
 </div>
 <br>
