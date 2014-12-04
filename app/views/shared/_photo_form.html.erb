@@ -1,8 +1,8 @@
 <%= form_for(@photo, html: { multipart: true }) do |f| %>
   <input type="hidden" name="referrer" value="LABEL" />
-  <input type="hidden" id="callback_url" name="exit" value="https://fast-cliffs-5083.herokuapp.com/photos" />
+  <input type="hidden" id="callback_url" name="exit" value="https://label-fashionistas.herokuapp.com/photos" />
   <input type="hidden" name="method" value="GET" />
-  <input type="hidden" name="target" value="http://localhost:3000/photos/pixlr" />
+  <input type="hidden" name="target" value="https://label-fashionistas.herokuapp.com/pixlr" />
   <input type="hidden" name="locktarget" value="true" />
   <input type="hidden" name="locktitle" value="true" />
   <input type="hidden" name="locktype" value="jpg" />
@@ -33,26 +33,3 @@
 
 
 
-<script>
-$(document).ready(function(){
-	$('#photo_file').change(function(){
-		var element = document.getElementById("photo_file")
-		var array = element.value.split('\\')
-		var name = array[array.length - 1]
-		console.log(name)
-		$("#file-name").text(name)
-	});
-
-
-
-	$('#snipshot').change(function(){
-    if ($(this).is(":checked")) {
-      $('#new_photo').attr("action", "http://apps.pixlr.com/express/");
-      $('#photo_file').attr("name", "image");
-    } else {
-      $('#new_photo').attr("action", "/photos");
-      $('#photo_file').attr("name", "photo[file]");
-    }
-  });
-});
-</script>

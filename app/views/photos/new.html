@@ -3,3 +3,27 @@
     <%= render 'shared/photo_form' %>
   </section>
 </div>
+
+<script>
+$(document).ready(function(){
+	$('#photo_file').change(function(){
+		var element = document.getElementById("photo_file")
+		var array = element.value.split('\\')
+		var name = array[array.length - 1]
+		console.log(name)
+		$("#file-name").text(name)
+	});
+
+
+
+	$('#snipshot').change(function(){
+    if ($(this).is(":checked")) {
+      $('#new_photo').attr("action", "http://apps.pixlr.com/express/");
+      $('#photo_file').attr("name", "image");
+    } else {
+      $('#new_photo').attr("action", "/photos");
+      $('#photo_file').attr("name", "photo[file]");
+    }
+  });
+});
+</script>

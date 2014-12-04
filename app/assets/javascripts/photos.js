@@ -31,7 +31,5 @@ $(document).ready(function(){
 		}
 	});
 
-	for (i = 0; i < colorTags.length; i++){
-		$("#" + colorTags[i]).trigger("click");
-	}
+
 });
