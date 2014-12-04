@@ -25,8 +25,8 @@ class Photo < ActiveRecord::Base
 
   private
   	def validate_minimum_image_size
-  		if file.url
-	  		image = MiniMagick::Image.open(file.url)
+  		if file.path
+	  		image = MiniMagick::Image.open(file.path)
 	  		unless image[:width] > 400
 	  			errors.add :image, "should be 400px wide minimum!"
 	  		end
