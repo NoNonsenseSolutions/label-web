@@ -49,7 +49,7 @@ class PhotosController < ApplicationController
 		# 	tag = Tag.find_or_create_by(field: hashtag)
 		# 	@photo.tags << tag
 		# end
-		@photo.update(title: params[:title])
+		@photo.update(photo_params)
 		redirect_to @photo
 	end
 
