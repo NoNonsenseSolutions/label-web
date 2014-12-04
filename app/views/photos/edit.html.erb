@@ -128,9 +128,12 @@
 
 <script>
 	var colorTags = <%= raw @color_tags %>
-	$(document).ready(function(){
+
+	$(window).bind("load", function() {
 		for (i = 0; i < colorTags.length; i++){
 			$("#" + colorTags[i]).trigger("click");
 		}
+   // code here
 	});
+
 </script>
