@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 	before_action :logged_in_user
-	before_action :photo_find, only: [:show, :edit, :update]
+	before_action :photo_find, only: [:show, :edit, :update, :destroy]
 
 	def new
     @photo = current_user.photos.build
@@ -51,6 +51,12 @@ class PhotosController < ApplicationController
 		# end
 		@photo.update(photo_params)
 		redirect_to @photo
+	end
+
+	def destroy
+		@photo.tags.delete_all
+		@photo.destroy
+		redirect_to '/'
 	end
 
 

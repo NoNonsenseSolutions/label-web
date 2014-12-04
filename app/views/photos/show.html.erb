@@ -1,12 +1,15 @@
+<h3> <%= @photo.title %></h3>
+<p> By <%= @user.username %> </p>
 
-<h2> <%= @photo.title %> </h2>
-<h3> By <%= @user.username %></h3>
 
 <div class="row">
 
 	<div class="col-md-11">
 		<%= link_to image_tag(@photo.file.url), @photo %></span>
 	</div>
+	<div class="col-md-12">
+	<p><%= link_to "Edit", edit_photo_path, class: "black-link" %> <%= link_to 'Destroy',  { action: :destroy, id: @photo.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "black-link" %>
+	<div>
 </div>
 <br>
 <br>
