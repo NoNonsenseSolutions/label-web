@@ -177,3 +177,21 @@ div.photo {
 }
 
 .btn-comment { color: #ffffff; background-color: #000000; border-color: #555; }
+
+div.smallbox { 
+  width:24px;
+  height:24px;
+}
+
+.selected {
+  background-image: url('/images/x.gif');
+}
+
+#color_palette_tr {
+  display: flex;
+}
+
+div.palette_item{
+  width:100%;
+  height:32px;
+}

@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
   	params[:auth] = env["omniauth.auth"]
   	user = User.from_omniauth(user_params)
   	log_in(user)
-  	redirect_to '/tutorial/1'
+    if user.new_user
+      user.update(new_user: false)
+	    redirect_to '/tutorial/1'
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy

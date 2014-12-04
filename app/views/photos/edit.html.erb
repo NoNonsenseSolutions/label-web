@@ -1,0 +1,131 @@
+<%= form_for @photo do |f| %>
+  <div class="ultra_bottomspaced">
+    <h3>1. <b>Name</b> your look:</h3>
+    <%= f.text_field :title, size: '40' %>
+  </div>
+	<br>
+  <div>
+  	<h3>2. <b>Your</b> Labels:</h3>
+	  <%= image_tag @photo.file.url %>
+	</div>
+
+  <div class="ultra_bottomspaced">
+    <h3>3. <b>Create</b> a color palette:</h3>
+    
+    <div class="left_padded">  
+	    <p class="topspaced linespaced legible">
+	      Choose up to 5 colors that are <em>clearly visible</em> in your clothing or accessories.
+	    </p>
+
+	    <div style="width:350px;">
+	      <div class="more_topspaced">
+	        <table class="color_table">
+					  <tr>
+						 <td><div class="smallbox" id="660000" title="#660000" style="background-color:#660000;"></div></td>
+						 <td><div class="smallbox" id="de6318" title="#de6318" style="background-color:#de6318;"></div></td>
+						 <td><div class="smallbox" id="d3d100" title="#d3d100" style="background-color:#d3d100;"></div></td>
+						 <td><div class="smallbox" id="8c8c00" title="#8c8c00" style="background-color:#8c8c00;"></div></td>
+						 <td><div class="smallbox" id="293206" title="#293206" style="background-color:#293206;"></div></td>
+						 <td><div class="smallbox" id="34e3e5" title="#34e3e5" style="background-color:#34e3e5;"></div></td>
+						 <td><div class="smallbox" id="205260" title="#205260" style="background-color:#205260;"></div></td>
+						 <td><div class="smallbox" id="07194d" title="#07194d" style="background-color:#07194d;"></div></td> <!-- used to be 1c0946 -->
+						 <td><div class="smallbox" id="46008c" title="#46008c" style="background-color:#46008c;"></div></td>
+						 <td><div class="smallbox" id="33151a" title="#33151a" style="background-color:#33151a;"></div></td>
+						 <td><div class="smallbox" id="e30e5c" title="#e30e5c" style="background-color:#e30e5c;"></div></td>
+						 <td><div class="smallbox" id="3d1f00" title="#3d1f00" style="background-color:#3d1f00;"></div></td>
+						 <td><div class="smallbox" id="5e1800" title="#5e1800" style="background-color:#5e1800;"></div></td>
+						 <td><div class="smallbox" id="000000" title="#000000" style="background-color:#000000;"></div></td>
+					  </tr>
+					  <tr>
+						 <td><div class="smallbox" id="980000" title="#980000" style="background-color:#980000;"></div></td>
+						 <td><div class="smallbox" id="ff7f00" title="#ff7f00" style="background-color:#ff7f00;"></div></td>
+						 <td><div class="smallbox" id="ffff00" title="#ffff00" style="background-color:#ffff00;"></div></td>
+					    <td><div class="smallbox" id="88ba41" title="#88ba41" style="background-color:#88ba41;"></div></td>
+						 <td><div class="smallbox" id="006700" title="#006700" style="background-color:#006700;"></div></td>
+						 <td><div class="smallbox" id="65f3c9" title="#65f3c9" style="background-color:#65f3c9;"></div></td>
+						 <td><div class="smallbox" id="318c8c" title="#318c8c" style="background-color:#318c8c;"></div></td>
+						 <td><div class="smallbox" id="0033ab" title="#0033ab" style="background-color:#0033ab;"></div></td> <!-- used to be 31318c -->
+						 <td><div class="smallbox" id="5e318c" title="#5e318c" style="background-color:#5e318c;"></div></td>
+						 <td><div class="smallbox" id="520f41" title="#520f41" style="background-color:#520f41;"></div></td>
+						 <td><div class="smallbox" id="ff59ac" title="#ff59ac" style="background-color:#ff59ac;"></div></td>
+						 <td><div class="smallbox" id="8c5e31" title="#8c5e31" style="background-color:#8c5e31;"></div></td>
+						 <td><div class="smallbox" id="8c4600" title="#8c4600" style="background-color:#8c4600;"></div></td>
+						 <td><div class="smallbox" id="505050" title="#505050" style="background-color:#505050;"></div></td>
+					  </tr>
+					  <tr>
+						 <td><div class="smallbox" id="ff0000" title="#ff0000" style="background-color:#ff0000;"></div></td>
+						 <td><div class="smallbox" id="ffa000" title="#ffa000" style="background-color:#ffa000;"></div></td>
+						 <td><div class="smallbox" id="eed54f" title="#eed54f" style="background-color:#eed54f;"></div></td>
+						 <td><div class="smallbox" id="778c62" title="#778c62" style="background-color:#778c62;"></div></td>
+						 <td><div class="smallbox" id="00ae00" title="#00ae00" style="background-color:#00ae00;"></div></td>
+						 <td><div class="smallbox" id="77f5a7" title="#77f5a7" style="background-color:#77f5a7;"></div></td>
+						 <td><div class="smallbox" id="628c8c" title="#628c8c" style="background-color:#628c8c;"></div></td>
+						 <td><div class="smallbox" id="4a73bd" title="#4a73bd" style="background-color:#4a73bd;"></div></td>
+						 <td><div class="smallbox" id="77628c" title="#77628c" style="background-color:#77628c;"></div></td>
+						 <td><div class="smallbox" id="840e47" title="#840e47" style="background-color:#840e47;"></div></td>
+						 <td><div class="smallbox" id="ef8cae" title="#ef8cae" style="background-color:#ef8cae;"></div></td>
+						 <td><div class="smallbox" id="8e7032" title="#8e7032" style="background-color:#8e7032;"></div></td>
+						 <td><div class="smallbox" id="d1b45b" title="#d1b45b" style="background-color:#d1b45b;"></div></td>
+						 <td><div class="smallbox" id="828283" title="#828283" style="background-color:#828283;"></div></td>
+					  </tr>
+					  <tr>
+						 <td><div class="smallbox" id="e32636" title="#e32636" style="background-color:#e32636;"></div></td>
+						 <td><div class="smallbox" id="ffc549" title="#ffc549" style="background-color:#ffc549;"></div></td>
+						 <td><div class="smallbox" id="ffff6d" title="#ffff6d" style="background-color:#ffff6d;"></div></td>
+						 <td><div class="smallbox" id="8c8c62" title="#8c8c62" style="background-color:#8c8c62;"></div></td>
+						 <td><div class="smallbox" id="00ff00" title="#00ff00" style="background-color:#00ff00;"></div></td>
+						 <td><div class="smallbox" id="b2ffff" title="#b2ffff" style="background-color:#b2ffff;"></div></td>
+						 <td><div class="smallbox" id="62778c" title="#62778c" style="background-color:#62778c;"></div></td>
+						 <td><div class="smallbox" id="589ad5" title="#589ad5" style="background-color:#589ad5;"></div></td>
+						 <td><div class="smallbox" id="ac59ff" title="#ac59ff" style="background-color:#ac59ff;"></div></td>
+						 <td><div class="smallbox" id="8c6277" title="#8c6277" style="background-color:#8c6277;"></div></td>
+						 <td><div class="smallbox" id="ead0cd" title="#ead0cd" style="background-color:#ead0cd;"></div></td>
+						 <td><div class="smallbox" id="8c7762" title="#8c7762" style="background-color:#8c7762;"></div></td>
+						 <td><div class="smallbox" id="e2db9a" title="#e2db9a" style="background-color:#e2db9a;"></div></td>
+						 <td><div class="smallbox" id="b5b5b6" title="#b5b5b6" style="background-color:#b5b5b6;"></div></td>
+					  </tr>
+					  <tr>
+						 <td><div class="smallbox" id="fa624d" title="#fa624d" style="background-color:#fa624d;"></div></td>
+						 <td><div class="smallbox" id="ffc898" title="#ffc898" style="background-color:#ffc898;"></div></td>
+						 <td><div class="smallbox" id="fff2d3" title="#fff2d3" style="background-color:#fff2d3;"></div></td> <!-- used to be ffffae -->
+						 <td><div class="smallbox" id="96d28a" title="#96d28a" style="background-color:#96d28a;"></div></td>
+						 <td><div class="smallbox" id="a9ff00" title="#a9ff00" style="background-color:#a9ff00;"></div></td>
+						 <td><div class="smallbox" id="d8ffb2" title="#d8ffb2" style="background-color:#d8ffb2;"></div></td>
+						 <td><div class="smallbox" id="bdd6bd" title="#bdd6bd" style="background-color:#bdd6bd;"></div></td>
+						 <td><div class="smallbox" id="a1c4e9" title="#a1c4e9" style="background-color:#a1c4e9;"></div></td>
+						 <td><div class="smallbox" id="a297e9" title="#a297e9" style="background-color:#a297e9;"></div></td>
+						 <td><div class="smallbox" id="c6a5b6" title="#c6a5b6" style="background-color:#c6a5b6;"></div></td>
+						 <td><div class="smallbox" id="ffdfef" title="#ffdfef" style="background-color:#ffdfef;"></div></td>
+						 <td><div class="smallbox" id="c69c7b" title="#c69c7b" style="background-color:#c69c7b;"></div></td>
+						 <td><div class="smallbox" id="ffffff" title="#ffffff" style="background-color:#ffffff;"></div></td>
+						 <td><div class="smallbox" id="e7e7e7" title="#e7e7e7" style="background-color:#e7e7e7;"></div></td>
+					  </tr>
+					</table>
+	     	 </div>          
+	      <p class="more_topspaced linespaced legible">Your color palette:</p>
+	      
+	      <div class="more_topspaced" id="color_palette_tr" style="width:100%;"></div>
+	      <div class="clear"></div>
+	    </div>
+    </div>
+  </div>
+
+  <div class="ultra_bottomspaced">
+    <h3>4. <b>Describe</b> your look:</h3>
+    <div class="left_padded">
+      <p class="topspaced linespaced less_bottomspaced legible">
+        <b>NOTE:</b> You can add <span class="hashtag">#hashtags</span> to classify your look!
+      </p>
+  		<textarea name="photo[hashtags]", cols="60", rows="3", placeholder="#hashtag, #amazing"><%= @hash_tags.try(:join, (", ")) %></textarea>
+    </div>
+  </div>
+
+  <div>
+  	<%= f.submit "Update!", class: "btn btn-comment" %>
+  </div>
+
+<% end %>
+
+<script>
+	var colorTags = <%= raw @color_tags %>
+</script>

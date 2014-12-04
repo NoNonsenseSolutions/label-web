@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128033608) do
+ActiveRecord::Schema.define(version: 20141203111219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,14 @@ ActiveRecord::Schema.define(version: 20141128033608) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "photo_tags", force: true do |t|
+    t.integer "photo_id"
+    t.integer "tag_id"
+  end
+
+  add_index "photo_tags", ["photo_id"], name: "index_photo_tags_on_photo_id", using: :btree
+
   create_table "photos", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "like"
-    t.string   "comment"
     t.string   "qrcode"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -58,7 +62,6 @@ ActiveRecord::Schema.define(version: 20141128033608) do
 
   create_table "tags", force: true do |t|
     t.string   "field"
-    t.string   "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,14 +74,15 @@ ActiveRecord::Schema.define(version: 20141128033608) do
     t.string   "photo"
     t.string   "needlist"
     t.string   "closet"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "email"
+    t.boolean  "new_user",         default: true
   end
 
 end

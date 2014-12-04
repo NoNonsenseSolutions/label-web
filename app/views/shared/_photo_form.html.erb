@@ -2,7 +2,7 @@
   <input type="hidden" name="referrer" value="LABEL" />
   <input type="hidden" id="callback_url" name="exit" value="https://fast-cliffs-5083.herokuapp.com/photos" />
   <input type="hidden" name="method" value="GET" />
-  <input type="hidden" name="target" value="https://fast-cliffs-5083.herokuapp.com/photos/pixlr" />
+  <input type="hidden" name="target" value="http://localhost:3000/photos/pixlr" />
   <input type="hidden" name="locktarget" value="true" />
   <input type="hidden" name="locktitle" value="true" />
   <input type="hidden" name="locktype" value="jpg" />
@@ -17,7 +17,7 @@
 	    <%= f.file_field :file, class: "file-upload" %>
 	    
 	  </div>
-	  <button>Add Photo</button>
+	  <button disabled>Add Photo</button>
 	</div>
 	<div>
 		<label id="file-name"></label>

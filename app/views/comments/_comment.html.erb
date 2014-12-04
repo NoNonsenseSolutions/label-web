@@ -1,4 +1,22 @@
 <div class="row">
-	<%= comment.body %>
-	<%= comment.user.username %>
+	<div id="comment_<%= comment.id %>" class="comment">
+
+	  <table style="width:100%; table-layout:fixed;">
+	    <tbody><tr>
+
+	      <td style="vertical-align:top;align:left;">
+	        <div class="standard">
+	          <span class="normal"><a href="http://lookbook.nu/ciotolin27" class="userlink standard no_underline" title="Claudia" sl-processed="1"><%= comment.user.username %></a></span>
+
+
+	        </div>
+
+	        <div class="topspaced more_linespaced standard force_wrap" itemprop="commentText">
+	          <%= comment.body %>
+	        </div>
+
+	      </td>
+	    </tr>
+	  </tbody></table>
+	</div>
 </div>
