@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :logged_in_user
 	include SessionsHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
