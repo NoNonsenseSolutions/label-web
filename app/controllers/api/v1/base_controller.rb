@@ -1,7 +1,7 @@
 module Api
   module V1
     class BaseController < ApplicationController
-      protect_from_forgery with: :null_session
+      skip_before_action :verify_authenticity_token
       before_action :set_resource, only: [:destroy, :show, :update]
       
       respond_to :json
@@ -90,6 +90,10 @@ module Api
 
         def render_unauthorized
           render json: "Unauthorized"
+        end
+
+        def current_user
+          User.find_by(oauth_token: params[:oauth_token])
         end
     end
   end

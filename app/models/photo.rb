@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
   has_many :photo_tags
   has_many :colors
   mount_uploader :file, PhotoUploader
-  validate :validate_minimum_image_size, on: :create
+  # validate :validate_minimum_image_size, on: :create
   scope :title_search, ->(title) { where("lower(title) LIKE ?", "%#{title.downcase}%")}
 
   def edit_associated_tags(new_tags)
@@ -23,6 +23,7 @@ class Photo < ActiveRecord::Base
   end
 
 
+
   private
   	def validate_minimum_image_size
   		if file.path
@@ -35,4 +36,6 @@ class Photo < ActiveRecord::Base
 	  	end
 	  	
   	end
+
+
 end

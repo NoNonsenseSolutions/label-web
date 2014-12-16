@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
 	end
 
 	def create
+		byebug
 		@photo = current_user.photos.build(photo_params)
 		if @photo.save
 			flash[:success] = "Photo created!"
