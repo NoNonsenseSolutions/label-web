@@ -22,7 +22,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :users
+    namespace :v1 do
+      resources :users
+      resources :photos, only: :index
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
