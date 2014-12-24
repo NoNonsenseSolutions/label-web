@@ -2,8 +2,6 @@
 
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Sprockets::Helpers::RailsHelper
-  include Sprockets::Helpers::IsolatedHelper
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -19,13 +17,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process resize_and_pad: [200, 200]
   end
 
-  process :right_orientation
-  def right_orientation
-    manipulate! do |img|
-      img.auto_orient
-      img
-    end
-  end
 
   # Choose what kind of storage to use for this uploader:
   # storage :fog
