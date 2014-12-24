@@ -10,6 +10,8 @@ class Photo < ActiveRecord::Base
   validate :validate_minimum_image_size, on: :create
   scope :title_search, ->(title) { where("lower(title) LIKE ?", "%#{title.downcase}%")}
 
+
+  
   def edit_associated_tags(new_tags)
     new_tags.map(&:downcase)
     tags = self.tags.map(&:field)
