@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :photos
+      get 'photos_search', to: 'photos#search'
     end
   end
 

@@ -42,6 +42,17 @@ module Api
         render json: @photo
       end
 
+      def search
+        keyword = params[:keyword]
+        keyword = "##{keyword}" unless keyword[0] == "#"
+        tag = Tag.find_by(field: keyword)
+        photos_with_title = Photo.title_search("#{params[:keyword]}")
+        @photos = tag.try(:photos).to_a + photos_with_title
+        @photos = @photos.uniq
+        render json: @photos
+      end
+
+
       private
 
         def photo_params
