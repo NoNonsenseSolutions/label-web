@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :users
       post 'photos/feed', to: 'photos#feed'
       post 'photos/search', to: 'photos#search'
+      post 'photos/:id/like', to: 'photos#like'
       resources :photos
       resources :comments, only: :create
       

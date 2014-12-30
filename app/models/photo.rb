@@ -1,10 +1,9 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :qrcodes
   has_many :tags, dependent: :destroy
-  has_many :colors
   mount_uploader :file, PhotoUploader
   validate :validate_minimum_image_size, on: :create
   scope :title_search, ->(title) { where("lower(title) LIKE ?", "%#{title.downcase}%")}

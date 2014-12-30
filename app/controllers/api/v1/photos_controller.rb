@@ -55,6 +55,18 @@ module Api
         end
       end
 
+      def like
+        @photo = Photo.find(params[:id])
+        @like = Like.new(user_id: current_user.id, photo_id: params[:id])
+        @photo.likes_count += 1
+        @photo.save
+        if @like.save
+          render json: { total_likes: @photo.likes_count }
+        else
+          render json: { errors: @like.errors}
+        end
+      end
+
 
       private
 
