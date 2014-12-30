@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :follower_relationships
   has_many :followeds, through: :followed_relationships
   has_many :photos
-  mount_uploader :photo, PhotoUploader
+  mount_uploader :profile_pic, PhotoUploader
 
 
   def following? user
@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
       user.oauth_token = auth[:credentials][:token]
       user.oauth_expires_at = Time.at(auth[:credentials][:expires_at])
       user.gender = auth[:extra][:gender]
-      user.photo = auth[:info][:image]
       user.save!
     end
   end
