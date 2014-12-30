@@ -9,22 +9,33 @@ class Photo < ActiveRecord::Base
   scope :title_search, ->(title) { where("lower(title) LIKE ?", "%#{title.downcase}%")}
 
 
-  
-  def edit_associated_tags(new_tags)
+  #Make sure the duplicate tags are not added and removed tags are removed
+  def photo_tags
+    all_tags = Hash.new {|h,k| h[k]=[]}
+    self.tags.find_each do |t|
+      all_tags[t.field] << t.value
+    end
+    all_tags
+  end
+
+  def edit_associated_tags(new_tags, field)
     new_tags.map(&:downcase)
-    tags = self.tags.map(&:field)
-    removed_tags = tags - new_tags
-    self.tags.where(field: removed_tags).delete_all
-    added_tags = new_tags - tags
-    added_tags.each do |tag|
-      new_tag = Tag.find_or_create_by(field: tag)
+    #Loads all tags
+    old_tags = self.tags.where(field: field).map(&:value)
+    #find removed tags
+    removed_tags = old_tags - new_tags
+    self.tags.where(field: field, value: removed_tags).delete_all
+    #find added tags
+    added_tags = new_tags - old_tags
+    added_tags.each do |t|
+      new_tag = Tag.create(field: field, value: t)
       self.tags << new_tag
     end
   end
 
   def self.search_by_tags(keyword)
     keyword = "##{keyword}" unless keyword[0] == "#"
-    tag_ids = Tag.where(field: keyword).pluck(:photo_id)
+    tag_ids = Tag.where(value: keyword).pluck(:photo_id)
     photos_with_title = self.uniq.title_search("#{keyword}")
     @photos = self.where(id: tag_ids) + photos_with_title
     @photos = @photos.uniq
