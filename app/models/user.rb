@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :follower_relationships
   has_many :followeds, through: :followed_relationships
   has_many :photos
+  mount_uploader :photo, PhotoUploader
 
 
   def following? user

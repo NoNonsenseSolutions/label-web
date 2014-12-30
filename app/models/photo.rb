@@ -3,8 +3,7 @@ class Photo < ActiveRecord::Base
   has_many :comments
   has_many :likes
   has_many :qrcodes
-  has_many :tags, through: :photo_tags
-  has_many :photo_tags
+  has_many :tags, dependent: :destroy
   has_many :colors
   mount_uploader :file, PhotoUploader
   validate :validate_minimum_image_size, on: :create
@@ -22,6 +21,14 @@ class Photo < ActiveRecord::Base
       new_tag = Tag.find_or_create_by(field: tag)
       self.tags << new_tag
     end
+  end
+
+  def self.search_by_tags(keyword)
+    keyword = "##{keyword}" unless keyword[0] == "#"
+    tag_ids = Tag.where(field: keyword).pluck(:photo_id)
+    photos_with_title = self.uniq.title_search("#{keyword}")
+    @photos = self.where(id: tag_ids) + photos_with_title
+    @photos = @photos.uniq
   end
 
 

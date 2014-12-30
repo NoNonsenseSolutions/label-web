@@ -12,6 +12,7 @@ module Api
           @user = User.find_or_create_by(uid: uid)
           @user.oauth_token = params[:oauth_token]
       		@user.gender = profile["gender"]
+          @user.remote_photo_url = @graph.get_picture(profile['id'], width: 9999)
       		@user.provider = "facebook"
       		@user.uid = profile["id"]
       		@user.name = profile["first_name"] + profile["last_name"]

@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
+      post 'photos/feed', to: 'photos#feed'
+      post 'photos/search', to: 'photos#search'
       resources :photos
-      get 'photos_search', to: 'photos#search'
+      
+
     end
   end
 

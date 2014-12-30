@@ -83,13 +83,11 @@ module Api
         end
 
         def authenticate_token
-          authenticate_with_http_token do |token, options|
-            User.find_by(oauth_token: token)
-          end
+          User.find_by(oauth_token: params[:oauth_token])
         end
 
         def render_unauthorized
-          render json: "Unauthorized"
+            render json: { error: "Unauthorized" }
         end
 
         def current_user

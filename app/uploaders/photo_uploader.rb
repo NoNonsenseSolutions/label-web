@@ -11,7 +11,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  process resize_to_fit: [560, nil]
+  process resize_to_limit: [560, nil]
 
   version :thumb do
     process resize_and_pad: [200, 200]

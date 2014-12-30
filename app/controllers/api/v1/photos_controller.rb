@@ -2,6 +2,7 @@ module Api
   module V1
     class PhotosController < Api::V1::BaseController
       respond_to :json
+      before_action :authenticate, except: :show
 
       def create
         if params[:file]
@@ -31,25 +32,27 @@ module Api
         end
       end
 
-    	def index
-        @photos = Photo.all.reverse
-        render json: @photos
+    	def feed
+        page = params[:page] || 0
+        entries = params[:entries] || 10
+        @photos = Photo.offset(page.to_i*entries.to_i).first(entries.to_i)
+        render json: {photos: @photos}, :include => {tags: {only: :field}, user: {only: [:username, :photo]}}
       end
+
 
       def show
         @photo = Photo.find(params[:id])
         @comments = @photo.comments
-        render json: @photo
+        render json: {photo: @photo}, :include => {tags:{ only: :field}, user: {only: [:username, :photo]}}
       end
 
       def search
-        keyword = params[:keyword]
-        keyword = "##{keyword}" unless keyword[0] == "#"
-        tag = Tag.find_by(field: keyword)
-        photos_with_title = Photo.title_search("#{params[:keyword]}")
-        @photos = tag.try(:photos).to_a + photos_with_title
-        @photos = @photos.uniq
-        render json: @photos
+        @photos = Photo.search_by_tags(params[:keyword])
+        if @photos.size > 0
+          render json: {photos: @photos}, :include => {tags:{ only: :field}, user: {only: [:username, :photo]}}
+        else
+          render json: {error: "No photo found"}
+        end
       end
 
 
@@ -61,16 +64,6 @@ module Api
 
         def query_params
           params.permit(:oauth_token, :username)
-        end
-
-        def authenticate
-          authenticate_token || render_unauthorized
-        end
-
-        def authenticate_token
-          authenticate_with_http_token do |token, options|
-            User.find_by(oauth_token: token)
-          end
         end
 
         def uploaded_photo

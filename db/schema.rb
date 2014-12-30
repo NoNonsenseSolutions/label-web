@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203111219) do
+ActiveRecord::Schema.define(version: 20141230044615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +30,6 @@ ActiveRecord::Schema.define(version: 20141203111219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "photo_tags", force: true do |t|
-    t.integer "photo_id"
-    t.integer "tag_id"
-  end
-
-  add_index "photo_tags", ["photo_id"], name: "index_photo_tags_on_photo_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "qrcode"
@@ -64,6 +57,7 @@ ActiveRecord::Schema.define(version: 20141203111219) do
     t.string   "field"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "photo_id"
   end
 
   create_table "users", force: true do |t|
@@ -84,5 +78,7 @@ ActiveRecord::Schema.define(version: 20141203111219) do
     t.string   "email"
     t.boolean  "new_user",         default: true
   end
+
+  add_index "users", ["oauth_token"], name: "index_users_on_oauth_token", using: :btree
 
 end

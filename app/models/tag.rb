@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
   has_many :photo_tags
-  has_many :photos, through: :photo_tags
+  belongs_to :photo
   before_save :normalize
   scope :hash_tags, -> { where("field LIKE ?", "#%") }
   scope :color_tags, -> { where.not("field LIKE ?", "#%")}
