@@ -30,7 +30,7 @@ module Api
             tag_array = value.downcase.gsub(/[^\w\d#]/, '').split(/(?=[#])/).to_a
             @photo.edit_associated_tags(tag_array, field.to_s)
           end        
-          render json: {photo: @photo}, :methods => :photo_tags, :include => {comments: {only: :body}, user: {only: [:username, :photo]}}, status: 201
+          render json: {photo: @photo}, :methods => :photo_tags, :include => {comments: {only: :body}, user: {only: [:username, :profile_pic]}}, status: 201
         else
           render json: @photo.errors, status: 402
         end
@@ -40,20 +40,20 @@ module Api
         page = params[:page] || 0
         entries = params[:entries] || 10
         @photos = Photo.offset(page.to_i*entries.to_i).first(entries.to_i)
-        render json: {photos: @photos}, :include => {user: {only: [:username, :photo]}}
+        render json: {photos: @photos}, :include => {user: {only: [:username, :profile_pic]}}
       end
 
 
       def show
         @photo = Photo.find(params[:id])
         @comments = @photo.comments
-        render json: {photo: @photo}, :methods => :photo_tags, :include => {comments: {only: :body}, user: {only: [:username, :photo]}}
+        render json: {photo: @photo}, :methods => :photo_tags, :include => {comments: {only: :body}, user: {only: [:username, :profile_pic]}}
       end
 
       def search
         @photos = Photo.search_by_tags(params[:keyword])
         if @photos.size > 0
-          render json: {photos: @photos}, :include => {user: {only: [:username, :photo]}}
+          render json: {photos: @photos}, :include => {user: {only: [:username, :profile_pic]}}
         else
           render json: {error: "No photo found"}
         end
