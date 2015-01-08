@@ -41,6 +41,10 @@ class Photo < ActiveRecord::Base
     @photos = @photos.uniq
   end
 
+  def has_liked?(user)
+    !!self.likes.find_by(user: user)
+  end
+
 
 
   private

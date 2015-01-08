@@ -47,7 +47,7 @@ module Api
       def show
         @photo = Photo.find(params[:id])
         @comments = @photo.comments
-        render json: {photo: @photo}, :methods => :photo_tags, :include => {comments: {only: :body}, user: {only: [:name, :profile_pic]}}
+        render json: {photo: @photo, user_liked: @photo.has_liked?(current_user)}, :methods => :photo_tags, :include => {comments: {only: :body, methods: :user_info}, user: {only: [:name, :profile_pic]}}
       end
 
       def search
