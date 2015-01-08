@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signup', to: 'static_pages#signup', as: 'signup'
   get 'signout', to: 'sessions#destroy', as: 'signout'
-  
+
   get 'photos/pixlr', to: 'photos#pixlr'
   get 'photos/search', to: 'photos#search'
+
+
+  
   resources :relationships
   resources :users, only: [:show, :edit, :update]
   resources :photos do
@@ -23,6 +26,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      post 'users/uploaded', to: 'users#personal_feed'
+      post 'users/favourites', to: 'users#favourites_feed'
       resources :users
       post 'photos/feed', to: 'photos#feed'
       post 'photos/search', to: 'photos#search'
