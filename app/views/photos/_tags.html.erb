@@ -1,0 +1,6 @@
+
+<% unless color.blank? %>
+  <%= field  %>: <% color.split(", ").each do |tag| %>
+    <a href="/photos/search?keyword=<%= "%23" + tag[1..-1] %>" class="black-link"><%= tag %></a>
+  <% end %> 
+<% end %>

@@ -1,7 +1,7 @@
 <%= form_for(@photo, multipart: true) do |f| %>
   <div class="ultra_bottomspaced">
     <h3>1. <b>Name</b> your look:</h3>
-    <%= f.text_field :title, size: '40' %>
+    <%= f.text_field :title, size: '40', class: "form-control" %>
   </div>
 	<br>
   <div>
@@ -10,14 +10,20 @@
 	</div>
 
   <div class="ultra_bottomspaced">
-    <h3>3. <b>Create</b> a color palette:</h3>
+    <h3>3. <b>Describe</b> your looks:</h3>
     
-    <div class="left_padded">  
-	    <p class="topspaced linespaced legible">
-	      Choose up to 5 colors that are <em>clearly visible</em> in your clothing or accessories.
-	    </p>
-
-	    <div style="width:350px;">
+    <div class="left_padded">
+	    <%= f.label :color_tags %>
+	    <%= f.text_field :color_tags, namespace: :tags, class: "form-control", name:"photo[tags][color]"  %>
+	    <%= f.label :brand_tags %>
+	    <%= f.text_field :brand_tags, class: "form-control", name:"photo[tags][brand]"  %>
+	    <%= f.label :category_tags %>
+	    <%= f.text_field :category_tags, class: "form-control", name:"photo[tags][category]"  %>
+	    <%= f.label :occasion_tags %>
+	    <%= f.text_field :occasion_tags, class: "form-control", name:"photo[tags][occasion]"  %>
+	    <%= f.label :pattern_tags %>
+	    <%= f.text_field :pattern_tags, class: "form-control", name:"photo[tags][pattern]"  %>
+<!-- 	    <div style="width:350px;">
 	      <div class="more_topspaced">
 	        <table class="color_table">
 					  <tr>
@@ -28,7 +34,8 @@
 						 <td><div class="smallbox" id="293206" title="#293206" style="background-color:#293206;"></div></td>
 						 <td><div class="smallbox" id="34e3e5" title="#34e3e5" style="background-color:#34e3e5;"></div></td>
 						 <td><div class="smallbox" id="205260" title="#205260" style="background-color:#205260;"></div></td>
-						 <td><div class="smallbox" id="07194d" title="#07194d" style="background-color:#07194d;"></div></td> <!-- used to be 1c0946 -->
+						 <td><div class="smallbox" id="07194d" title="#07194d" style="background-color:#07194d;"></div></td> 
+
 						 <td><div class="smallbox" id="46008c" title="#46008c" style="background-color:#46008c;"></div></td>
 						 <td><div class="smallbox" id="33151a" title="#33151a" style="background-color:#33151a;"></div></td>
 						 <td><div class="smallbox" id="e30e5c" title="#e30e5c" style="background-color:#e30e5c;"></div></td>
@@ -44,7 +51,8 @@
 						 <td><div class="smallbox" id="006700" title="#006700" style="background-color:#006700;"></div></td>
 						 <td><div class="smallbox" id="65f3c9" title="#65f3c9" style="background-color:#65f3c9;"></div></td>
 						 <td><div class="smallbox" id="318c8c" title="#318c8c" style="background-color:#318c8c;"></div></td>
-						 <td><div class="smallbox" id="0033ab" title="#0033ab" style="background-color:#0033ab;"></div></td> <!-- used to be 31318c -->
+						 <td><div class="smallbox" id="0033ab" title="#0033ab" style="background-color:#0033ab;"></div></td> 
+
 						 <td><div class="smallbox" id="5e318c" title="#5e318c" style="background-color:#5e318c;"></div></td>
 						 <td><div class="smallbox" id="520f41" title="#520f41" style="background-color:#520f41;"></div></td>
 						 <td><div class="smallbox" id="ff59ac" title="#ff59ac" style="background-color:#ff59ac;"></div></td>
@@ -87,7 +95,8 @@
 					  <tr>
 						 <td><div class="smallbox" id="fa624d" title="#fa624d" style="background-color:#fa624d;"></div></td>
 						 <td><div class="smallbox" id="ffc898" title="#ffc898" style="background-color:#ffc898;"></div></td>
-						 <td><div class="smallbox" id="fff2d3" title="#fff2d3" style="background-color:#fff2d3;"></div></td> <!-- used to be ffffae -->
+						 <td><div class="smallbox" id="fff2d3" title="#fff2d3" style="background-color:#fff2d3;"></div></td>
+
 						 <td><div class="smallbox" id="96d28a" title="#96d28a" style="background-color:#96d28a;"></div></td>
 						 <td><div class="smallbox" id="a9ff00" title="#a9ff00" style="background-color:#a9ff00;"></div></td>
 						 <td><div class="smallbox" id="d8ffb2" title="#d8ffb2" style="background-color:#d8ffb2;"></div></td>
@@ -106,10 +115,10 @@
 	      
 	      <div class="more_topspaced" id="color_palette_tr" style="width:100%;"></div>
 	      <div class="clear"></div>
-	    </div>
+	    </div> -->
     </div>
   </div>
-
+<!-- 
   <div class="ultra_bottomspaced">
     <h3>4. <b>Describe</b> your look:</h3>
     <div class="left_padded">
@@ -118,14 +127,15 @@
       </p>
   		<textarea name="photo[hashtags]", cols="60", rows="3", placeholder="#hashtag, #amazing"><%= @hash_tags.try(:join, (", ")) %></textarea>
     </div>
-  </div>
+  </div> -->
 
   <div>
+  	<br />
   	<%= f.submit "Update!", class: "btn btn-comment" %>
   </div>
 
 <% end %>
-
+<!-- 
 <script>
 	
 
@@ -170,4 +180,4 @@
    // code here
 	});
 
-</script>
+</script> -->

@@ -18,6 +18,26 @@ class Photo < ActiveRecord::Base
     all_tags
   end
 
+  def color_tags
+    tags.where(field: "color").pluck(:value).join(", ")
+  end
+
+  def category_tags
+    tags.where(field: "category").pluck(:value).join(", ")
+  end
+
+  def occasion_tags
+    tags.where(field: "occasion").pluck(:value).join(", ")
+  end
+
+  def brand_tags
+    tags.where(field: "brand").pluck(:value).join(", ")
+  end
+
+  def pattern_tags
+    tags.where(field: "pattern").pluck(:value).join(", ")
+  end
+
   def edit_associated_tags(new_tags, field)
     new_tags.map(&:downcase)
     #Loads all tags

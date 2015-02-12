@@ -11,16 +11,26 @@
 	<p><%= link_to "Edit", edit_photo_path, class: "black-link" %> <%= link_to 'Destroy',  { action: :destroy, id: @photo.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "black-link" %>
 	</p>
 	<p>
-		Tags: <% @photo.tags.hash_tags.each do |tag| %>
-			<a href="/photos/search?keyword=<%= "%23" + tag.field[1..-1] %>" class="black-link"><%= tag.field %></a>
-		<% end %> 
+		<%= render partial: 'tags', locals: {field: "Color", color: @photo.color_tags} %>
+	</p>
+	<p>
+		<%= render partial: 'tags', locals: {field: "Brand", color: @photo.brand_tags} %>
+	</p>
+	<p>
+		<%= render partial: 'tags', locals: {field: "Category", color: @photo.category_tags} %>
+	</p>
+	<p>
+		<%= render partial: 'tags', locals: {field: "Occasion", color: @photo.occasion_tags} %>
+	</p>
+	<p>
+		<%= render partial: 'tags', locals: {field: "Pattern", color: @photo.pattern_tags} %>
 	</p>
 	<div>
 </div>
 <br>
 <br>
 <div class="row">
-	<section class="comment_form col-md-offset-1">
+	<section class="comment_form">
 		<%= render 'shared/comment_form' %>
 	</section>
 </div>

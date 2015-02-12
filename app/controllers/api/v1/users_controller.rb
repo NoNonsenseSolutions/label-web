@@ -34,14 +34,14 @@ module Api
       def personal_feed
         page = params[:page] || 0
         entries = params[:entries] || 10
-        @photos = current_user.photos.offset(page.to_i*entries.to_i).first(entries.to_i)
+        @photos = current_user.photos.reverse_order.offset(page.to_i*entries.to_i).first(entries.to_i)
         render json: {photos: @photos}, :include => {user: {only: [:name, :profile_pic]}}
       end
 
       def favourites_feed
         page = params[:page] || 0
         entries = params[:entries] || 10
-        @photos = Photo.where(id: Like.where(user: current_user).pluck(:photo_id)).offset(page.to_i*entries.to_i).first(entries.to_i)
+        @photos = Photo.where(id: Like.where(user: current_user).pluck(:photo_id)).reverse_order.offset(page.to_i*entries.to_i).first(entries.to_i)
         render json: {photos: @photos}, :include => {user: {only: [:name, :profile_pic]}}
       end
 

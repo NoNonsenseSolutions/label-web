@@ -33,15 +33,14 @@ class PhotosController < ApplicationController
 	end
 
 	def edit
-		@hash_tags = @photo.tags.hash_tags.map(&:field)
-		@color_tags = @photo.tags.color_tags.map(&:field)
 	end
 
 	def update
-		hash_tags = params[:photo][:hashtags].downcase.gsub(/[^\w\d#]/, '').split(/(?=[#])/).to_a
-		color_tags = params[:photo][:color_attributes].to_a.map {|attr| attr["hex"] }
-		new_tags = hash_tags + color_tags
-		@photo.edit_associated_tags(new_tags)
+		tags = params[:photo][:tags]
+    tags.each do |field, value| 
+      tag_array = value.downcase.gsub(/[^\w\d#]/, '').split(/(?=[#])/).to_a
+      @photo.edit_associated_tags(tag_array, field.to_s)
+    end  
 		# Array.wrap(params[:photo][:color_attributes]).each do |color|
 		# 	hashtags << color["hex"]
 		# end
@@ -63,9 +62,9 @@ class PhotosController < ApplicationController
   def search
     keyword = params["keyword"]
     keyword = "##{keyword}" unless keyword[0] == "#"
-    tag = Tag.find_by(field: keyword)
+    tags = Tag.where(value: keyword)
     photos_with_title = Photo.title_search("#{params[:keyword]}")
-    @photos = tag.try(:photos).to_a + photos_with_title
+    @photos = tags.map(&:photo) + photos_with_title
     @photos = @photos.uniq
     render 'search_results'
   end
